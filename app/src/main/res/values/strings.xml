@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">TodoList</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="edit_list">Edit List</string>
+    <string name="add_list">Add List</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="logout">Logout</string>
+    <string name="delete_all_list">Delete All List</string>
+    <string name="fill_in_the_blanks">Fill in the blank</string>
+    <string name="list_generated">List generated.</string>
+    <string name="list_no_edited">List not edited!</string>
+    <string name="list_deleted">List Deleted.</string>
+    <string name="list_updated">List Updated.</string>
+    <string name="list_all_deleted">Deleted All Lists</string>
+    <string name="sort_list">Sort List</string>
+    <string name="register">Register</string>
+    <string name="dont_match_pass">Your passwords don\'t match.</string>
+    <string name="open_login">Already a member? Click to login.</string>
+    <string name="open_register">Not a member? Click here to register</string>
+
+    <string name="edit_todo">Edit Todo</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="delete_all_todo">Delete All Todo</string>
+    <string name="todo_generated">Todo generated.</string>
+    <string name="todo_no_edited">Todo not edited!</string>
+    <string name="todo_deleted">Todo Deleted.</string>
+    <string name="todo_updated">Todo Updated.</string>
+</resources>

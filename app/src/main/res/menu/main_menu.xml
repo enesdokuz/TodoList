@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/delete_main_menu"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete_all_list"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_main_menu"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sort_list"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logout_main_menu"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+</menu>
