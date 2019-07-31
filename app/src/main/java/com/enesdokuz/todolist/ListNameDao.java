@@ -30,12 +30,12 @@ public interface ListNameDao {
     @Delete
     void delete(ListName listName);
 
-    @Query("DELETE FROM list_name_table WHERE owner_id LIKE :ownId")
-    void deleteAllLists(int ownId);
+    @Query("DELETE FROM list_name_table WHERE owner_id LIKE :owner_id")
+    void deleteAllLists(int owner_id);
 
-    @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :ownId ORDER BY title ASC")
-    LiveData<List<ListName>> getAllLists(int ownId);
+    @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :owner_id ORDER BY title ASC")
+    LiveData<List<ListName>> getAllLists(int owner_id);
 
-    @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :ownId ORDER BY :type DESC")
-    LiveData<List<ListName>> getAllListWithSort(int ownId,String type);
+    @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :owner_id ORDER BY :type DESC")
+    LiveData<List<ListName>> getAllListWithSort(int owner_id,String type);
 }

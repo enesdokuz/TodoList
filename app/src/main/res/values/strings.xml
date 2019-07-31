@@ -3,6 +3,10 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="alert_register_text">This email may be in use.</string>
+    <string name="alert_login_text">Email or password is incorrect</string>
+    <string name="alert_server_error">Internal Server Error</string>
+    <string name="alert_missing_parameter">Missing Parameter email or password</string>
     <string name="edit_list">Edit List</string>
     <string name="add_list">Add List</string>
     <string name="title">Title</string>
@@ -38,4 +42,5 @@
     <string name="name_desc_todo">Name Desc</string>
     <string name="create_asc_todo">Create Date Asc</string>
     <string name="create_desc_todo">Create Date Desc</string>
+    <string name="share_todo">Share Todo List</string>
 </resources>

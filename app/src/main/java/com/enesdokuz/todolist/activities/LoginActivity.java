@@ -78,7 +78,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 NetworkResponse networkResponse = error.networkResponse;
                 if (networkResponse != null && networkResponse.data != null) {
-                    Log.e("Login", networkResponse.data + " Code: " + networkResponse.statusCode);
+                    Log.e("Login", " Code: " + networkResponse.statusCode);
+                    if (networkResponse.statusCode == 401) {
+
+                        Toast.makeText(LoginActivity.this, "" + getResources().getString(R.string.alert_login_text), Toast.LENGTH_LONG).show();
+                    } else if (networkResponse.statusCode == 405) {
+
+                        Toast.makeText(LoginActivity.this, "" + getResources().getString(R.string.alert_missing_parameter), Toast.LENGTH_LONG).show();
+                    } else if (networkResponse.statusCode == 500) {
+
+                        Toast.makeText(LoginActivity.this, "" + getResources().getString(R.string.alert_server_error), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         }) {

@@ -16,35 +16,41 @@
         <menu>
             <item
                 android:id="@+id/sort_deadline_asc_todo_menu"
-                android:title="@string/deadline_asc_todo"/>
+                android:title="@string/deadline_asc_todo" />
 
             <item
                 android:id="@+id/sort_deadline_desc_todo_menu"
-                android:title="@string/deadline_desc_todo"/>
+                android:title="@string/deadline_desc_todo" />
 
             <item
                 android:id="@+id/sort_create_asc_todo_menu"
-                android:title="@string/create_asc_todo"/>
+                android:title="@string/create_asc_todo" />
 
             <item
                 android:id="@+id/sort_create_desc_todo_menu"
-                android:title="@string/create_desc_todo"/>
+                android:title="@string/create_desc_todo" />
 
             <item
                 android:id="@+id/sort_status_asc_todo_menu"
-                android:title="@string/status_asc_todo"/>
+                android:title="@string/status_asc_todo" />
 
             <item
                 android:id="@+id/sort_status_desc_todo_menu"
-                android:title="@string/status_desc_todo"/>
+                android:title="@string/status_desc_todo" />
 
             <item
                 android:id="@+id/sort_name_asc_todo_menu"
-                android:title="@string/name_asc_todo"/>
+                android:title="@string/name_asc_todo" />
 
             <item
                 android:id="@+id/sort_name_desc_todo_menu"
-                android:title="@string/name_desc_todo"/>
+                android:title="@string/name_desc_todo" />
         </menu>
     </item>
+
+    <item
+        android:id="@+id/share_todo_menu"
+        android:icon="@drawable/ic_share"
+        android:title="@string/share_todo"
+        app:showAsAction="ifRoom" />
 </menu>

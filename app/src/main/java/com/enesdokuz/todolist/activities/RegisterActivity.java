@@ -84,7 +84,17 @@ public class RegisterActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 NetworkResponse networkResponse = error.networkResponse;
                 if (networkResponse != null && networkResponse.data != null) {
-                    Log.e("Register", networkResponse.data + " Code: " + networkResponse.statusCode);
+                    Log.e("Register", " Code: " + networkResponse.statusCode);
+                    if (networkResponse.statusCode == 401) {
+
+                        Toast.makeText(RegisterActivity.this, "" + getResources().getString(R.string.alert_register_text), Toast.LENGTH_LONG).show();
+                    } else if (networkResponse.statusCode == 405) {
+
+                        Toast.makeText(RegisterActivity.this, "" + getResources().getString(R.string.alert_missing_parameter), Toast.LENGTH_LONG).show();
+                    } else if (networkResponse.statusCode == 500) {
+
+                        Toast.makeText(RegisterActivity.this, "" + getResources().getString(R.string.alert_server_error), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         }) {

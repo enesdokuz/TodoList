@@ -40,6 +40,7 @@ public class TodoActivity extends AppCompatActivity {
     private Methods methods;
     private TodoAdapter todoAdapter;
     private RecyclerView recyclerView;
+    private List<Todo> todosForShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class TodoActivity extends AppCompatActivity {
             public void onChanged(List<Todo> todos) {
 
                 todoAdapter.setTodos(todos);
+                todosForShare = todos;
             }
         });
 
@@ -110,6 +112,7 @@ public class TodoActivity extends AppCompatActivity {
                 startActivityForResult(intent, EDIT_TODO_REQUEST);
             }
         });
+
 
     }
 
@@ -167,6 +170,10 @@ public class TodoActivity extends AppCompatActivity {
                 Toast.makeText(this, "" + getResources().getString(R.string.todo_all_deleted), Toast.LENGTH_SHORT).show();
                 return true;
 
+            case R.id.share_todo_menu:
+                ShareTodo();
+                return true;
+
             case R.id.sort_deadline_asc_todo_menu:
                 PreferenceSingleton.getInstance().setTodoOrderType("deadline");
                 todoViewModel.getAllTodoAsc().observe(this, new Observer<List<Todo>>() {
@@ -175,7 +182,7 @@ public class TodoActivity extends AppCompatActivity {
                         todoAdapter.setTodos(todos);
                     }
                 });
-                Toast.makeText(this, "Todo is "+getResources().getString(R.string.deadline_asc_todo), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Todo is " + getResources().getString(R.string.deadline_asc_todo), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.sort_deadline_desc_todo_menu:
                 PreferenceSingleton.getInstance().setTodoOrderType("deadline");
@@ -247,5 +254,31 @@ public class TodoActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    public void ShareTodo() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, ShareStringGenerator() + "");
+        intent.setType("text/plain");
+        startActivity(intent);
+
+    }
+
+    public String ShareStringGenerator() {
+        String result = "";
+        if (todosForShare != null) {
+            for (int i = 0; i < todosForShare.size(); i++) {
+                result += "Todo: " + i
+                        + " \nName: " + todosForShare.get(i).getName()
+                        + " \nDescription: " + todosForShare.get(i).getDescription()
+                        + " \nCreated Date: " + todosForShare.get(i).getCreate_date()
+                        + " \nDeadline: " + todosForShare.get(i).getDeadline()
+                        + " \nComplated: " + todosForShare.get(i).getStatus()
+                        + "\n\n";
+            }
+        }
+        Log.e("TodoShare:", result + "");
+        return result;
     }
 }
