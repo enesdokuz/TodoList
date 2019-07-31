@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TodoList</string>
+    <string name="app_name" translatable="false">TodoList</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -11,6 +11,8 @@
     <string name="add_list">Add List</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="deadline">Deadline</string>
+    <string name="complated">Complated</string>
     <string name="logout">Logout</string>
     <string name="delete_all_list">Delete All List</string>
     <string name="fill_in_the_blanks">Fill in the blank</string>

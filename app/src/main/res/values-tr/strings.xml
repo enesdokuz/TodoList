@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">E-posta</string>
+    <string name="password">Şifre</string>
+    <string name="login">Giriş</string>
+    <string name="alert_register_text">E-posta kullanımda</string>
+    <string name="alert_login_text">E-posta ya da şifre hatalı</string>
+    <string name="alert_server_error">Genel Sunucu Hatası</string>
+    <string name="alert_missing_parameter">Eksik parametre e-posta ya da şifre</string>
+    <string name="edit_list">Listeyi Düzenle</string>
+    <string name="add_list">Liste Ekle</string>
+    <string name="title">Başlık</string>
+    <string name="description">Açıklama</string>
+    <string name="deadline">Deadline</string>
+    <string name="complated">Tamamlandı</string>
+    <string name="logout">Çıkış</string>
+    <string name="delete_all_list">Tüm listeleri sil</string>
+    <string name="fill_in_the_blanks">Boşlukları doldur</string>
+    <string name="list_generated">Liste oluşturuldu</string>
+    <string name="list_no_edited">Liste düzenlenemedi</string>
+    <string name="list_deleted">Liste silindi.</string>
+    <string name="list_updated">Liste güncellendi</string>
+    <string name="list_all_deleted">Tüm listeler silindi</string>
+    <string name="sort_list">Listeyi sırala</string>
+    <string name="register">Kayıt</string>
+    <string name="dont_match_pass">Şifreler uyuşmuyor.</string>
+    <string name="open_login">Zaten üye misin? Tıkla giriş yap.</string>
+    <string name="open_register">Üye değil misin? Tıkla üye ol.</string>
+
+    <string name="edit_todo">Yapılacakları düzenle</string>
+    <string name="add_todo">Yapılacak ekle</string>
+    <string name="delete_all_todo">Tüm yapılacakları sil</string>
+    <string name="todo_generated">Yapılacak oluşturuldu.</string>
+    <string name="todo_no_edited">Yapılacak düzenlenemedi.</string>
+    <string name="todo_deleted">Yapılacak silindi.</string>
+    <string name="todo_updated">Yapılacak güncellendi.</string>
+    <string name="todo_all_deleted">Tüm yapılacaklar silindi.</string>
+    <string name="sort_todo">Yapılacakları Sırala</string>
+    <string name="deadline_asc_todo">Deadline artan</string>
+    <string name="deadline_desc_todo">Deadline azalan</string>
+    <string name="status_asc_todo">Önce tamamlananlar</string>
+    <string name="status_desc_todo">Önce tamamlanmayanlar</string>
+    <string name="name_asc_todo">Başlığa göre artan</string>
+    <string name="name_desc_todo">Başlığa göre azalan</string>
+    <string name="create_asc_todo">Oluşturulma tarihine göre artan</string>
+    <string name="create_desc_todo">Oluşturulma tarihine göre azalan</string>
+    <string name="share_todo">Paylaş</string>
+</resources>
