@@ -80,7 +80,7 @@ public class PreferenceSingleton {
     }
 
     public String getTodoOrderType() {
-        Log.e(TAG, preferences.getInt("todo_order_type", -1) + "");
+        Log.e(TAG, preferences.getString("todo_order_type", "status") + "");
         return preferences.getString("todo_order_type", "status");
     }
 }

@@ -20,13 +20,4 @@
         android:layout_margin="32dp"
         android:src="@drawable/ic_add" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_sort_todo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="32dp"
-        android:src="@drawable/ic_sort" />
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -28,4 +28,14 @@
     <string name="todo_no_edited">Todo not edited!</string>
     <string name="todo_deleted">Todo Deleted.</string>
     <string name="todo_updated">Todo Updated.</string>
+    <string name="todo_all_deleted">Deleted All Todos</string>
+    <string name="sort_todo">Sort Todo</string>
+    <string name="deadline_asc_todo">Deadline Asc</string>
+    <string name="deadline_desc_todo">Deadline Desc</string>
+    <string name="status_asc_todo">Status Asc</string>
+    <string name="status_desc_todo">Status Desc</string>
+    <string name="name_asc_todo">Name Asc</string>
+    <string name="name_desc_todo">Name Desc</string>
+    <string name="create_asc_todo">Create Date Asc</string>
+    <string name="create_desc_todo">Create Date Desc</string>
 </resources>

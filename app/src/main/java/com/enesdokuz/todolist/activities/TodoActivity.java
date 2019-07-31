@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,19 +46,11 @@ public class TodoActivity extends AppCompatActivity {
 
         methods = new Methods(TodoActivity.this);
         FloatingActionButton btnAdd = findViewById(R.id.btn_add_todo);
-        FloatingActionButton btnSort = findViewById(R.id.btn_sort_todo);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TodoActivity.this, AddEditTodoActivity.class);
                 startActivityForResult(intent, ADD_TODO_REQUEST);
-            }
-        });
-
-        btnSort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Sort func.
             }
         });
 
@@ -70,6 +65,7 @@ public class TodoActivity extends AppCompatActivity {
         todoViewModel.getAllTodo().observe(this, new Observer<List<Todo>>() {
             @Override
             public void onChanged(List<Todo> todos) {
+
                 todoAdapter.setTodos(todos);
             }
         });
@@ -150,6 +146,102 @@ public class TodoActivity extends AppCompatActivity {
             todoViewModel.update(todo);
 
             Toast.makeText(this, "" + getResources().getString(R.string.todo_updated), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.todo_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_todo_menu:
+                todoViewModel.deleteAllTodo();
+                Toast.makeText(this, "" + getResources().getString(R.string.todo_all_deleted), Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.sort_deadline_asc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("deadline");
+                todoViewModel.getAllTodoAsc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+            case R.id.sort_deadline_desc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("deadline");
+                todoViewModel.getAllTodoDesc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+
+            case R.id.sort_create_asc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("create_date");
+                todoViewModel.getAllTodoAsc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+            case R.id.sort_create_desc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("create_date");
+                todoViewModel.getAllTodoDesc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+
+            case R.id.sort_name_asc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("name");
+                todoViewModel.getAllTodoAsc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+            case R.id.sort_name_desc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("name");
+                todoViewModel.getAllTodoDesc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+
+            case R.id.sort_status_asc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("status");
+                todoViewModel.getAllTodoAsc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+            case R.id.sort_status_desc_todo_menu:
+                PreferenceSingleton.getInstance().setTodoOrderType("status");
+                todoViewModel.getAllTodoDesc().observe(this, new Observer<List<Todo>>() {
+                    @Override
+                    public void onChanged(List<Todo> todos) {
+                        todoAdapter.setTodos(todos);
+                    }
+                });
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
     }
