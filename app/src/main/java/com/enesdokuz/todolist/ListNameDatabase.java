@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.enesdokuz.todolist.model.ListName;
+import com.enesdokuz.todolist.model.Todo;
 import com.enesdokuz.todolist.utils.Constants;
 import com.enesdokuz.todolist.utils.PreferenceSingleton;
 
@@ -20,12 +21,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
  * 27.07.2019
  ***/
 
-@Database(entities = {ListName.class}, version = Constants.VERSION_DB)
+@Database(entities = {ListName.class, Todo.class}, version = Constants.VERSION_DB)
 public abstract class ListNameDatabase extends RoomDatabase {
 
     private static ListNameDatabase instance;
 
     public abstract ListNameDao listNameDao();
+    public abstract TodoDao todoDao();
 
     public static synchronized ListNameDatabase getInstance(Context context) {
         if (instance == null) {
@@ -47,9 +49,11 @@ public abstract class ListNameDatabase extends RoomDatabase {
 
     private static class PopulateDbAsycnTask extends AsyncTask<Void, Void, Void> {
         private ListNameDao listNameDao;
+        private TodoDao todoDao;
 
         private PopulateDbAsycnTask(ListNameDatabase db) {
             listNameDao = db.listNameDao();
+            todoDao = db.todoDao();
 
         }
 

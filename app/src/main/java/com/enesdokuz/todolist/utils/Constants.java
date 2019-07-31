@@ -14,7 +14,7 @@ public class Constants implements Serializable {
     public static final String LIST_DB = "list_database";
     public static final String LIST_NAME_TABLE = "list_name_table";
     public static final String LIST_TODO_TABLE = "list_todo_table";
-    public static final int VERSION_DB = 4;
+    public static final int VERSION_DB = 6;
 
     //for intent.
     public static final String EXTRA_TITLE_LIST = "EXTRA_TITLE_LIST";

@@ -4,8 +4,10 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Room;
 
 import com.enesdokuz.todolist.model.Todo;
+import com.enesdokuz.todolist.utils.Constants;
 import com.enesdokuz.todolist.utils.PreferenceSingleton;
 
 import java.util.List;
@@ -22,8 +24,9 @@ public class TodoRepository {
     private LiveData<List<Todo>> allTodo, allTodoWithOrderAsc, allTodoWithOrderDesc;
 
     public TodoRepository(Application application) {
-        TodoDatabase database = TodoDatabase.getInstance(application);
+        AppDatabase database = AppDatabase.getInstance(application);
         todoDao = database.todoDao();
+
         allTodo = todoDao.getAllTodo(PreferenceSingleton.getInstance().getUserId(), PreferenceSingleton.getInstance().getListId());
         allTodoWithOrderAsc = todoDao.getAllTodoOrderAsc(PreferenceSingleton.getInstance().getUserId(), PreferenceSingleton.getInstance().getListId(), PreferenceSingleton.getInstance().getTodoOrderType());
         allTodoWithOrderDesc = todoDao.getAllTodoOrderDesc(PreferenceSingleton.getInstance().getUserId(), PreferenceSingleton.getInstance().getListId(), PreferenceSingleton.getInstance().getTodoOrderType());

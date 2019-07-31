@@ -9,6 +9,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.enesdokuz.todolist.ListNameDao;
+import com.enesdokuz.todolist.TodoDao;
+import com.enesdokuz.todolist.model.ListName;
 import com.enesdokuz.todolist.model.Todo;
 import com.enesdokuz.todolist.utils.Constants;
 import com.enesdokuz.todolist.utils.PreferenceSingleton;
@@ -17,18 +20,19 @@ import com.enesdokuz.todolist.utils.PreferenceSingleton;
  * TodoList
  * Enes Dokuz enesdokuz
  * www.enesdokuz.com
- * 2019-07-30
+ * 2019-07-31
  ***/
-@Database(entities = {Todo.class}, version = Constants.VERSION_DB)
-public abstract class TodoDatabase extends RoomDatabase {
+@Database(entities = {ListName.class, Todo.class},version = Constants.VERSION_DB)
+public abstract class AppDatabase extends RoomDatabase {
 
-    private static TodoDatabase instance;
+    private static AppDatabase instance;
 
-    public abstract TodoDao todoDao();
+    public abstract ListNameDao listNameDao();
+    public  abstract TodoDao todoDao();
 
-    public static synchronized TodoDatabase getInstance(Context context) {
+    public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(), TodoDatabase.class, Constants.LIST_DB)
+            instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, Constants.LIST_DB)
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallBack)
                     .build();
@@ -45,18 +49,20 @@ public abstract class TodoDatabase extends RoomDatabase {
     };
 
     private static class PopulateDbAsycnTask extends AsyncTask<Void, Void, Void> {
+        private ListNameDao listNameDao;
         private TodoDao todoDao;
 
-        private PopulateDbAsycnTask(TodoDatabase db) {
+        private PopulateDbAsycnTask(AppDatabase db) {
+            listNameDao = db.listNameDao();
             todoDao = db.todoDao();
+
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            todoDao.insert(new Todo(PreferenceSingleton.getInstance().getListId(), PreferenceSingleton.getInstance().getUserId(), "Önemli bir todo", "Önemli Todo'nun açıklamasıdır.", "20.09.2019"
-                    , "20.09.2019", false));
+            listNameDao.insert(new ListName("Talimat 1", "Sağa ya da sola kaydırarak listeyi silebilirsiniz", PreferenceSingleton.getInstance().getUserId()));
+            listNameDao.insert(new ListName("Talimat 2", "Listeye tıkladığınızda ilgili listeyi düzenlersiniz.", PreferenceSingleton.getInstance().getUserId()));
             return null;
         }
     }
-
 }

@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
             startActivity(new Intent(StartActivity.this, LoginActivity.class));
             finish();
         } else {
-            startActivity(new Intent(StartActivity.this, TodoActivity.class));
+            startActivity(new Intent(StartActivity.this, MainActivity.class));
             finish();
         }
     }
