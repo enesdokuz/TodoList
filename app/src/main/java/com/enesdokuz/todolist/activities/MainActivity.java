@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ import com.enesdokuz.todolist.R;
 import com.enesdokuz.todolist.utils.Constants;
 import com.enesdokuz.todolist.utils.Methods;
 import com.enesdokuz.todolist.viewmodel.ListNameViewModel;
+import com.enesdokuz.todolist.viewmodel.TodoViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int ADD_LIST_REQUEST = 1;
     public static final int EDIT_LIST_REQUEST = 2;
     private ListNameViewModel listNameViewModel;
+    private TodoViewModel todoViewModel;
     private Methods methods;
     private ListsAdapter listsAdapter;
     private RecyclerView recyclerView;
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         listsAdapter = new ListsAdapter();
         recyclerView.setAdapter(listsAdapter);
 
+        todoViewModel = ViewModelProviders.of(this).get(TodoViewModel.class);
         listNameViewModel = ViewModelProviders.of(this).get(ListNameViewModel.class);
         listNameViewModel.getAllLists().observe(this, new Observer<List<ListName>>() {
             @Override
@@ -78,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
+                PreferenceSingleton.getInstance().setListId(viewHolder.getAdapterPosition());
                 listNameViewModel.delete(listsAdapter.getListAt(viewHolder.getAdapterPosition()));
+                todoViewModel.deleteAllTodo();
                 Toast.makeText(MainActivity.this, "" + getResources().getString(R.string.list_deleted), Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
@@ -151,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.delete_main_menu:
                 listNameViewModel.deleteAllList();
+                todoViewModel.deleteAllTodo();
                 Toast.makeText(this, "" + getResources().getString(R.string.list_all_deleted), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.logout_main_menu:
