@@ -32,7 +32,7 @@ public interface TodoDao {
     @Query("DELETE FROM list_todo_table WHERE owner_id LIKE :owner_id AND list_id LIKE :list_id")
     void deleteAllTodo(int owner_id,int list_id);
 
-    @Query("SELECT * FROM list_todo_table WHERE owner_id LIKE :owner_id AND list_id LIKE :list_id")
+    @Query("SELECT * FROM list_todo_table WHERE owner_id LIKE :owner_id AND list_id LIKE :list_id ORDER BY deadline DESC")
     LiveData<List<Todo>> getAllTodo(int owner_id,int list_id);
 
     @Query("SELECT * FROM list_todo_table WHERE owner_id LIKE :owner_id AND list_id LIKE :list_id ORDER BY :order_type DESC")

@@ -2,6 +2,7 @@ package com.enesdokuz.todolist.viewmodel;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -17,10 +18,11 @@ import java.util.List;
  * 2019-07-30
  ***/
 public class TodoViewModel extends AndroidViewModel {
+
     private TodoRepository repository;
     private LiveData<List<Todo>> allTodo, allTodoDesc, allTodoAsc;
 
-    public TodoViewModel(Application application) {
+    public TodoViewModel(@NonNull Application application) {
         super(application);
         repository = new TodoRepository(application);
         allTodo = repository.getAllTodo();

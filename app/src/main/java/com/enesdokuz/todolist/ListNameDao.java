@@ -33,7 +33,7 @@ public interface ListNameDao {
     @Query("DELETE FROM list_name_table WHERE owner_id LIKE :ownId")
     void deleteAllLists(int ownId);
 
-    @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :ownId ORDER BY description ASC")
+    @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :ownId ORDER BY title ASC")
     LiveData<List<ListName>> getAllLists(int ownId);
 
     @Query("SELECT * FROM list_name_table WHERE owner_id LIKE :ownId ORDER BY :type DESC")

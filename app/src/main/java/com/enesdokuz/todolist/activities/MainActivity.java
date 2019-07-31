@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.sort_main_menu:
-                PreferenceSingleton.getInstance().setListNameSortType("title");
+                PreferenceSingleton.getInstance().setListNameSortType("description");
                 listNameViewModel.getAllListsWithSort().observe(this, new Observer<List<ListName>>() {
                     @Override
                     public void onChanged(List<ListName> listNames) {

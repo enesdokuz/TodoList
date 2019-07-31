@@ -24,8 +24,5 @@ public class Methods {
         device_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
-    public int getUserId() {
-        return preferences.getInt("user_id", -1);
-    }
 
 }

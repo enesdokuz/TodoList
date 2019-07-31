@@ -28,6 +28,8 @@ import com.enesdokuz.todolist.utils.PreferenceSingleton;
 import com.enesdokuz.todolist.viewmodel.TodoViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class TodoActivity extends AppCompatActivity {
@@ -154,7 +156,7 @@ public class TodoActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.todo_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
@@ -173,6 +175,7 @@ public class TodoActivity extends AppCompatActivity {
                         todoAdapter.setTodos(todos);
                     }
                 });
+                Toast.makeText(this, "Todo is "+getResources().getString(R.string.deadline_asc_todo), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.sort_deadline_desc_todo_menu:
                 PreferenceSingleton.getInstance().setTodoOrderType("deadline");

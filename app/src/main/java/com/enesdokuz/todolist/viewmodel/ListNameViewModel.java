@@ -18,6 +18,7 @@ import androidx.lifecycle.LiveData;
  * 27.07.2019
  ***/
 public class ListNameViewModel extends AndroidViewModel {
+
     private ListNameRepository repository;
     private LiveData<List<ListName>> allLists,allListsWithSort;
 
