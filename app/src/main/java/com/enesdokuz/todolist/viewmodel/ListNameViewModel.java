@@ -3,6 +3,7 @@ package com.enesdokuz.todolist.viewmodel;
 import android.app.Application;
 
 import com.enesdokuz.todolist.model.ListName;
+import com.enesdokuz.todolist.ListNameRepository;
 
 import java.util.List;
 
@@ -17,12 +18,12 @@ import androidx.lifecycle.LiveData;
  * 27.07.2019
  ***/
 public class ListNameViewModel extends AndroidViewModel {
-    private exListNameRepository repository;
+    private ListNameRepository repository;
     private LiveData<List<ListName>> allLists,allListsWithSort;
 
     public ListNameViewModel(@NonNull Application application) {
         super(application);
-        repository  = new exListNameRepository(application);
+        repository  = new ListNameRepository(application);
         allLists = repository.getAllLists();
         allListsWithSort = repository.getAlllistsWithSort();
     }

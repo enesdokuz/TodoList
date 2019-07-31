@@ -61,7 +61,8 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             listNameDao.insert(new ListName("Talimat 1", "Sağa ya da sola kaydırarak listeyi silebilirsiniz", PreferenceSingleton.getInstance().getUserId()));
-            listNameDao.insert(new ListName("Talimat 2", "Listeye tıkladığınızda ilgili listeyi düzenlersiniz.", PreferenceSingleton.getInstance().getUserId()));
+            listNameDao.insert(new ListName("Talimat 2", "Listeye uzun tıkladığınızda ilgili listeyi düzenlersiniz.", PreferenceSingleton.getInstance().getUserId()));
+            listNameDao.insert(new ListName("Talimat 3", "Listeye kısa tıkladığınızda ilgili listenin detayını görüntülersiniz.", PreferenceSingleton.getInstance().getUserId()));
             return null;
         }
     }
