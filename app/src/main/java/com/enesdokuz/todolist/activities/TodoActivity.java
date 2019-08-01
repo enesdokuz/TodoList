@@ -124,7 +124,7 @@ public class TodoActivity extends AppCompatActivity {
 
             String title = data.getStringExtra(Constants.EXTRA_NAME_ITEM);
             String description = data.getStringExtra(Constants.EXTRA_DESCRIPTION_ITEM);
-            String createDate = "20-01-2019";
+            String createDate = methods.getDate();
             String deadline = data.getStringExtra(Constants.EXTRA_DEADLINE_DAY_ITEM) + "-" + data.getStringExtra(Constants.EXTRA_DEADLINE_MONTH_ITEM) + "-" + data.getStringExtra(Constants.EXTRA_DEADLINE_YEAR_ITEM);
             Boolean status = data.getBooleanExtra(Constants.EXTRA_STATUS_ITEM, false);
 

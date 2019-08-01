@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.text.format.DateFormat;
+import android.util.Log;
+
+import java.util.Date;
 
 /***
  * TodoList
@@ -24,5 +28,12 @@ public class Methods {
         device_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    public String getDate() {
+        String result;
+        Date d = new Date();
+        CharSequence s = DateFormat.format("d-M-yyyy", d.getTime());
+        result = s + "";
+        return result;
+    }
 
 }
