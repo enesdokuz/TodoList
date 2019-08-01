@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.enesdokuz.todolist.EmailValidator;
 import com.enesdokuz.todolist.utils.PreferenceSingleton;
 import com.enesdokuz.todolist.R;
 import com.enesdokuz.todolist.utils.Constants;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText editEmail, editPassword;
     private RequestQueue queue;
+    private EmailValidator emailValidator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,18 @@ public class LoginActivity extends AppCompatActivity {
         editEmail = findViewById(R.id.editEmail_Login);
         editPassword = findViewById(R.id.editPassword_Login);
         queue = Volley.newRequestQueue(LoginActivity.this);
+
+        emailValidator = new EmailValidator();
+        editEmail.addTextChangedListener(emailValidator);
     }
 
     public void onClickLogin(View view) {
+        if (!emailValidator.isValid()) {
+            editEmail.setError("Invalid email");
+            Log.e("Login", "Not saving personal information: Invalid email");
+            return;
+        }
+
         if (editEmail.getText().toString().length() > 0 && editPassword.getText().toString().length() > 0) {
 
             RequestLogin(editEmail.getText().toString().trim() + "", editPassword.getText().toString().trim() + "");
@@ -54,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void RequestLogin(final String _email, final String _password) {
         String url = Constants.LOGIN_URL;
-        Log.e("Login", "Deneme");
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {

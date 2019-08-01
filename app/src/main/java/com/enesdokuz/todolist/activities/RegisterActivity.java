@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.enesdokuz.todolist.EmailValidator;
 import com.enesdokuz.todolist.utils.PreferenceSingleton;
 import com.enesdokuz.todolist.R;
 import com.enesdokuz.todolist.utils.Constants;
@@ -31,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private RequestQueue queue;
     private EditText editEmail, editPassword, editPasswordRe;
+    private EmailValidator emailValidator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,17 @@ public class RegisterActivity extends AppCompatActivity {
         editEmail = findViewById(R.id.editEmail_Register);
         editPassword = findViewById(R.id.editPassword_Register);
         editPasswordRe = findViewById(R.id.editPasswordRe_Register);
+
+        emailValidator = new EmailValidator();
+        editEmail.addTextChangedListener(emailValidator);
     }
 
     public void onClickRegister(View view) {
+        if (!emailValidator.isValid()) {
+            editEmail.setError("Invalid email");
+            Log.e("Register", "Not saving personal information: Invalid email");
+            return;
+        }
 
         if (editEmail.getText().toString().length() > 0 && editPassword.getText().toString().length() > 0 && editPasswordRe.getText().toString().length() > 0) {
 
