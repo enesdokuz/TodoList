@@ -1,5 +1,5 @@
 # TodoList
-TodoList for opensource.
+TodoList for Huawei Task.
 
 Used technologies: Volley, RoomDatabase, Dao, LiveData, RecyclerView.
 
